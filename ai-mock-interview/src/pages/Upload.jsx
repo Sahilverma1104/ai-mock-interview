@@ -31,7 +31,7 @@ export default function Upload() {
       return;
     }
 
-    const res = await fetch("http://localhost:5000/start-interview", {
+    const res = await fetch("https://ai-mock-interview-backend-8pxv.onrender.com", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
