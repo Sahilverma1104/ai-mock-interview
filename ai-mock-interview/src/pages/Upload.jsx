@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+const API = import.meta.env.VITE_BACKEND_URL;
+
 export default function Upload() {
   const [resume, setResume] = useState(null);
   const [skills, setSkills] = useState([]);
@@ -14,7 +16,7 @@ export default function Upload() {
     const formData = new FormData();
     formData.append("resume", file);
 
-    const res = await fetch("http://localhost:5000/extract-skills", {
+    const res = await fetch(`${API}/extract-skills`, {
       method: "POST",
       body: formData,
     });
@@ -31,7 +33,7 @@ export default function Upload() {
       return;
     }
 
-    const res = await fetch("https://ai-mock-interview-backend-8pxv.onrender.com", {
+    const res = await fetch(`${API}/start-interview`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
